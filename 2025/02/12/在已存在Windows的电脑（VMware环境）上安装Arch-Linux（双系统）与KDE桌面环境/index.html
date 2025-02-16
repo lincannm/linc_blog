@@ -36,7 +36,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://blog.linc.work/images/redefine-og.webp">
 <meta property="article:published_time" content="2025-02-12T14:51:26.000Z">
-<meta property="article:modified_time" content="2025-02-13T14:48:30.440Z">
+<meta property="article:modified_time" content="2025-02-16T06:36:40.817Z">
 <meta property="article:author" content="Lincannm">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="Arch Linux">
@@ -385,8 +385,8 @@
     
         <span class="article-date article-meta-item">
             <i class="fa-regular fa-wrench"></i>&nbsp;
-            <span class="desktop">2025-02-13 22:48:30</span>
-            <span class="mobile">2025-02-13 22:48:30</span>
+            <span class="desktop">2025-02-16 14:36:40</span>
+            <span class="mobile">2025-02-16 14:36:40</span>
             <span class="hover-info">更新</span>
         </span>
     
@@ -502,9 +502,10 @@
 </blockquote>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mount /dev/&lt;根分区&gt; /mnt  <span class="comment"># 先把根分区挂载到/mnt</span></span><br><span class="line">mount --<span class="built_in">mkdir</span> /dev/&lt;EFI分区&gt; /mnt/boot  <span class="comment"># 再把EFI分区挂载到/mnt/boot</span></span><br><span class="line">swapon /dev/&lt;swap分区&gt;  <span class="comment"># 启用swap分区</span></span><br></pre></td></tr></table></figure></div>
 
-<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist  <span class="comment"># 编辑源为国内镜像源</span></span><br><span class="line">pacman -Sy archlinux-keyring  <span class="comment"># 更新keyring</span></span><br><span class="line">pacstrap -K /mnt base linux linux-firmware  <span class="comment"># 向硬盘安装base软件包、linux内核、linux固件</span></span><br><span class="line">genfstab -U /mnt &gt; /mnt/etc/fstab  <span class="comment"># 向已安装的新系统生成fstab</span></span><br></pre></td></tr></table></figure></div>
+<h3 id="安装系统"><a href="#安装系统" class="headerlink" title="安装系统"></a>安装系统</h3><h4 id="安装基本系统"><a href="#安装基本系统" class="headerlink" title="安装基本系统"></a>安装基本系统</h4><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/pacman.d/mirrorlist  <span class="comment"># 编辑源为国内镜像源</span></span><br><span class="line">pacman -Sy archlinux-keyring  <span class="comment"># 更新keyring</span></span><br><span class="line">pacstrap -K /mnt base linux linux-firmware vim networkmanager  <span class="comment"># 向硬盘安装base软件包、linux内核、linux固件 与 vim、网络管理器</span></span><br><span class="line">genfstab -U /mnt &gt; /mnt/etc/fstab  <span class="comment"># 向已安装的新系统生成fstab</span></span><br></pre></td></tr></table></figure></div>
 
-<p><code>linux-firmware</code>在虚拟机可以不用安装。<code>fstab</code>文件用于定义在系统启动时自动挂载的文件系统。</p>
+<p><code>linux-firmware</code>在虚拟机可以不用安装。<code>vim</code>和<code>networkmanager</code>是附加的，方便后续编辑文本和配置网络。</p>
+<p>生成的<code>fstab</code>文件用于定义在系统启动时自动挂载的文件系统。</p>
 <h4 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h4><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">arch-chroot /mnt  <span class="comment"># chroot到新安装的系统</span></span><br><span class="line"><span class="built_in">ln</span> -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  <span class="comment"># 设置时区</span></span><br><span class="line">hwclock --systohc  <span class="comment"># 生成 /etc/adjtime</span></span><br></pre></td></tr></table></figure></div>
 
 <h5 id="本地化设置"><a href="#本地化设置" class="headerlink" title="本地化设置"></a>本地化设置</h5><p><strong>编辑 <code>/etc/locale.gen</code></strong></p>
@@ -519,18 +520,16 @@
 <p>然后设置LANG变量：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LANG=en_US.UTF-8</span><br></pre></td></tr></table></figure></div>
 
-<h5 id="配置网络（预设置）"><a href="#配置网络（预设置）" class="headerlink" title="配置网络（预设置）"></a>配置网络（预设置）</h5><p><strong>编辑<code>/etc/hostname</code></strong>：</p>
+<p><strong>编辑<code>/etc/hostname</code></strong>：</p>
 <div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/hostname</span><br></pre></td></tr></table></figure></div>
 
 <p>之后写入主机名。</p>
-<p><strong>安装网络管理器</strong>：</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy networkmanager</span><br></pre></td></tr></table></figure></div>
-
 <h5 id="设置root密码"><a href="#设置root密码" class="headerlink" title="设置root密码"></a>设置root密码</h5><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure></div>
 
-<h5 id="安装GRUB引导"><a href="#安装GRUB引导" class="headerlink" title="安装GRUB引导"></a>安装GRUB引导</h5><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy grub efibootmgr os-prober  <span class="comment"># os-prober用来探测别的操作系统</span></span><br></pre></td></tr></table></figure></div>
+<h5 id="安装GRUB引导"><a href="#安装GRUB引导" class="headerlink" title="安装GRUB引导"></a>安装GRUB引导</h5><p>没有grub，就引导不了我们的archlinux。</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy grub efibootmgr os-prober  <span class="comment"># os-prober用来探测别的操作系统</span></span><br></pre></td></tr></table></figure></div>
 
-<p>编辑<code>/etc/default/grub</code>并取消下面这一行的注释：</p>
+<p>为了使用os-proper来探测我们的Windows系统，编辑<code>/etc/default/grub</code>并取消下面这一行的注释：</p>
 <div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_DISABLE_OS_PROBER=false</span><br></pre></td></tr></table></figure></div>
 
 <p>安装GRUB：</p>
@@ -556,7 +555,7 @@
                       alt="image-20250213205335987"
                 ></p>
 <p>使用<code>NetworkManager</code>这个网络管理器配置网络，毕竟有<code>nmtui</code>这个工具方便点。</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start NetworkManager  <span class="comment"># 启动NetworkManager服务</span></span><br><span class="line">systemctl <span class="built_in">enable</span> NetworkManager  <span class="comment"># 开机自启</span></span><br><span class="line">nmtui  <span class="comment"># 启动命令行UI</span></span><br></pre></td></tr></table></figure></div>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> --now NetworkManager  <span class="comment"># 设置NetworkManager开机自启并立即启动</span></span><br><span class="line">nmtui  <span class="comment"># 启动命令行UI</span></span><br></pre></td></tr></table></figure></div>
 
 <p><img  
                      lazyload
@@ -567,10 +566,17 @@
 <p><img  
                      lazyload
                      src="/images/loading.svg"
+                     data-src="/2025/02/12/%E5%9C%A8%E5%B7%B2%E5%AD%98%E5%9C%A8Windows%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%88VMware%E7%8E%AF%E5%A2%83%EF%BC%89%E4%B8%8A%E5%AE%89%E8%A3%85Arch-Linux%EF%BC%88%E5%8F%8C%E7%B3%BB%E7%BB%9F%EF%BC%89%E4%B8%8EKDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/image-20250215222916007.png"
+                      alt="image-20250215222916007"
+                ></p>
+<p>选中ens33按enter取消连接（自动消失可还行），下面的有线连接1自动激活。</p>
+<p><img  
+                     lazyload
+                     src="/images/loading.svg"
                      data-src="/2025/02/12/%E5%9C%A8%E5%B7%B2%E5%AD%98%E5%9C%A8Windows%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%88VMware%E7%8E%AF%E5%A2%83%EF%BC%89%E4%B8%8A%E5%AE%89%E8%A3%85Arch-Linux%EF%BC%88%E5%8F%8C%E7%B3%BB%E7%BB%9F%EF%BC%89%E4%B8%8EKDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/image-20250213181612633.png"
                       alt="image-20250213181612633"
                 ></p>
-<p>这样确保它启用了，然后就可以连接互联网了。</p>
+<p>这样确保它启用了（前面有个星号，右边按钮是Deactivate按钮），然后就可以连接互联网了。可以<code>ping baidu.com</code>试试看。</p>
 <p>其实主要还是因为一开始没有DHCP自动获取ip，而<code>NetworkManager</code>刚好内置这个服务，获取ip成功后就能上网了。只安装<code>dhcpcd</code>这个DHCP服务其实也是一样的效果，也能上网。</p>
 <h3 id="新建用户"><a href="#新建用户" class="headerlink" title="新建用户"></a>新建用户</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy <span class="built_in">sudo</span>  <span class="comment"># 安装sudo，这玩意不自带</span></span><br><span class="line">useradd -m -G wheel linc  <span class="comment"># 创建用户，名字为linc，创建用户主目录，且用户属于wheel用户组（可以用sudo）</span></span><br><span class="line">passwd linc  <span class="comment"># 设置密码</span></span><br></pre></td></tr></table></figure></div>
 
@@ -581,7 +587,7 @@
                      data-src="/2025/02/12/%E5%9C%A8%E5%B7%B2%E5%AD%98%E5%9C%A8Windows%E7%9A%84%E7%94%B5%E8%84%91%EF%BC%88VMware%E7%8E%AF%E5%A2%83%EF%BC%89%E4%B8%8A%E5%AE%89%E8%A3%85Arch-Linux%EF%BC%88%E5%8F%8C%E7%B3%BB%E7%BB%9F%EF%BC%89%E4%B8%8EKDE%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/image-20250213182831376.png"
                       alt="image-20250213182831376"
                 ></p>
-<h3 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy openssh</span><br><span class="line">systemctl <span class="built_in">enable</span> sshd</span><br><span class="line">systemctl start sshd</span><br></pre></td></tr></table></figure></div>
+<h3 id="安装SSH"><a href="#安装SSH" class="headerlink" title="安装SSH"></a>安装SSH</h3><div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pacman -Sy openssh</span><br><span class="line">systemctl <span class="built_in">enable</span> --now sshd</span><br></pre></td></tr></table></figure></div>
 
 <p>编辑<code>/stc/ssh/sshd_config</code>，添加<code>PermitRootLogin yes</code>（取消注释并修改），以允许通过ssh登录root用户。</p>
 <p><img  
@@ -615,15 +621,29 @@
                       alt="Windows11x64-2025-02-13-21-15-36"
                 ></p>
 <h3 id="中文化"><a href="#中文化" class="headerlink" title="中文化"></a>中文化</h3><ol>
-<li><p>（也可以不做？）编辑<code>/etc/locale.gen</code>，去掉<code>zh_CN.UTF-8</code>注释，执行<code>locale-gen</code>。</p>
-</li>
 <li><p>去kde的设置，切换语言为中文简体，之后会提示重启系统，字体还没装先不重启。</p>
 </li>
 <li><p>安装思源黑体，不然显示不了中文：</p>
-<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy adobe-source-han-sans-cn-fonts</span><br></pre></td></tr></table></figure></div></li>
-<li><p>重启系统，成了。</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy adobe-source-han-sans-cn-fonts</span><br></pre></td></tr></table></figure></div>
+</li>
+<li><p>重启系统就好了。</p>
 </li>
 </ol>
+<h2 id="解决问题（在VMware下）"><a href="#解决问题（在VMware下）" class="headerlink" title="解决问题（在VMware下）"></a>解决问题（在VMware下）</h2><h3 id="声音极其卡顿"><a href="#声音极其卡顿" class="headerlink" title="声音极其卡顿"></a>声音极其卡顿</h3><p>在我的虚拟机上，声音卡的一笔。。尝试了几个解决办法，把自带的pipewire换成pulseaudio可以解决。然而直接安装pulseaudio会提示与pipewire冲突：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[linc@VM ~]$ <span class="built_in">sudo</span> pacman -Sy pulseaudio</span><br><span class="line">:: Synchronizing package databases...</span><br><span class="line"> core is up to <span class="built_in">date</span></span><br><span class="line"> extra              extra is up to <span class="built_in">date</span></span><br><span class="line">                                       resolving dependencies...</span><br><span class="line">looking <span class="keyword">for</span> conflicting packages...</span><br><span class="line">:: pulseaudio-17.0+r43+g3e2bb8a1e-1 and pipewire-pulse-1:1.2.7-1 are <span class="keyword">in</span> conflict. Remove pipewire-pulse? [y/N] y</span><br><span class="line">error: failed to prepare transaction (could not satisfy dependencies)</span><br><span class="line">:: removing pipewire-pulse breaks dependency <span class="string">&#x27;pipewire-pulse&#x27;</span> required by pulse-native-provider</span><br></pre></td></tr></table></figure></div>
+
+<p>所以需要卸载pipewire：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Rdd pipewire-pulse</span><br></pre></td></tr></table></figure></div>
+
+<p>安装pulseaudio（和pulseaudio-alsa）：</p>
+<div class="code-container" data-rel="Bash"><figure class="iseeu highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">sudo</span> pacman -Sy pulseaudio pulseaudio-alsa</span><br></pre></td></tr></table></figure></div>
+
+<p>重启，ok。</p>
+<p>然而过一段时间声音又发不出来了。。因此需要禁用 PulseAudio 的自动挂起功能：</p>
+<p>编辑 PulseAudio 的配置文件<code>/etc/pulse/default.pa</code>，找到这一行：</p>
+<div class="code-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">load-module module-suspend-on-idle</span><br></pre></td></tr></table></figure></div>
+
+<p>用<code>#</code>注释掉，重启就行。</p>
 
 		</div>
 
@@ -638,7 +658,7 @@
         
             <li>
                 <strong>更新于
-                    :</strong> 2025-02-13 22:48:30
+                    :</strong> 2025-02-16 14:36:40
             </li>
         
         <li>
@@ -760,7 +780,7 @@
 	<div class="post-toc">
 		<div class="toc-title">目录</div>
 		<div class="page-title">在已存在Windows的电脑（VMware环境）上安装Arch Linux（双系统）与KDE桌面环境</div>
-		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arch-Linux-%E5%AE%89%E8%A3%85"><span class="nav-text">Arch Linux 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E5%88%86%E5%8C%BA%EF%BC%8C%E5%B9%B6%E5%90%AF%E5%8A%A8LiveCD"><span class="nav-text">提前分区，并启动LiveCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="nav-text">配置系统时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA"><span class="nav-text">硬盘分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">安装系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%90%8E%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-text">安装后基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C-1"><span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-text">新建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSH"><span class="nav-text">安装SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85zsh"><span class="nav-text">安装zsh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85KDE"><span class="nav-text">安装KDE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-text">中文化</span></a></li></ol></li></ol>
+		<ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Arch-Linux-%E5%AE%89%E8%A3%85"><span class="nav-text">Arch Linux 安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E5%89%8D%E5%88%86%E5%8C%BA%EF%BC%8C%E5%B9%B6%E5%90%AF%E5%8A%A8LiveCD"><span class="nav-text">提前分区，并启动LiveCD</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%B3%BB%E7%BB%9F%E6%97%B6%E9%97%B4"><span class="nav-text">配置系统时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA"><span class="nav-text">硬盘分区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F"><span class="nav-text">安装系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85%E5%90%8E%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE"><span class="nav-text">安装后基本配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C-1"><span class="nav-text">配置网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="nav-text">新建用户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85SSH"><span class="nav-text">安装SSH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E8%A3%85zsh"><span class="nav-text">安装zsh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85KDE"><span class="nav-text">安装KDE</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%87%E5%8C%96"><span class="nav-text">中文化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E9%97%AE%E9%A2%98%EF%BC%88%E5%9C%A8VMware%E4%B8%8B%EF%BC%89"><span class="nav-text">解决问题（在VMware下）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A3%B0%E9%9F%B3%E6%9E%81%E5%85%B6%E5%8D%A1%E9%A1%BF"><span class="nav-text">声音极其卡顿</span></a></li></ol></li></ol>
 
 	</div>
 </div>

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.29.1" theme-name="Stellar" theme-version="1.29.1">
-  <meta name="robots" content="none">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,12 +17,13 @@
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
   
-  <title>Lincannm</title>
+  <title>在780M核显笔记本上通过LM Studio本地化部署DeepSeek大模型 - Lincannm</title>
 
   
-  <meta name="description" content="Lincannm 的博客">
+  <meta name="description" content="本来想用Ollama部署LLM，但我下载启动Ollama后发现官方不支持我的Radeon 780M核显（gfx1103）：
+123456789101112C:\Users\lincannm&gt;ollama serve2025/02/01 18:01:29 routes.go:1187: I...">
   
-  
+  <meta name="keywords" content="LLM">
 
   <!-- feed -->
   
@@ -37,7 +38,7 @@
 </head>
 <body>
 
-<div class="l_body s:aa index tech" id="start" layout="404" ><aside class="l_left"><div class="leftbar-container">
+<div class="l_body s:aa content tech" id="start" layout="post" ><aside class="l_left"><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="https://avatars.githubusercontent.com/u/41236336" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main" ff="title">Lincannm</div><div class="sub cap">Hello</div></a></div></header>
@@ -49,28 +50,77 @@
 <nav class="menu dis-select"><a class="nav-item active" title="博客" href="/" style="color:#1BCDFC"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M5.879 2.879C5 3.757 5 5.172 5 8v8c0 2.828 0 4.243.879 5.121C6.757 22 8.172 22 11 22h2c2.828 0 4.243 0 5.121-.879C19 20.243 19 18.828 19 16V8c0-2.828 0-4.243-.879-5.121C17.243 2 15.828 2 13 2h-2c-2.828 0-4.243 0-5.121.879M8.25 17a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 0 1.5H9a.75.75 0 0 1-.75-.75M9 12.25a.75.75 0 0 0 0 1.5h6a.75.75 0 0 0 0-1.5zM8.25 9A.75.75 0 0 1 9 8.25h6a.75.75 0 0 1 0 1.5H9A.75.75 0 0 1 8.25 9" clip-rule="evenodd"/><path fill="currentColor" d="M5.235 4.058C5 4.941 5 6.177 5 8v8c0 1.823 0 3.058.235 3.942L5 19.924c-.975-.096-1.631-.313-2.121-.803C2 18.243 2 16.828 2 14v-4c0-2.829 0-4.243.879-5.121c.49-.49 1.146-.707 2.121-.803zm13.53 15.884C19 19.058 19 17.822 19 16V8c0-1.823 0-3.059-.235-3.942l.235.018c.975.096 1.631.313 2.121.803C22 5.757 22 7.17 22 9.999v4c0 2.83 0 4.243-.879 5.122c-.49.49-1.146.707-2.121.803z" opacity=".5"/></svg></a><a class="nav-item" title="关于" href="/about" style="color:#FB8A3F"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" d="M20 12a8 8 0 1 1-16 0a8 8 0 0 1 16 0" opacity=".5"/><path fill="currentColor" d="M17.712 5.453c1.047-.193 2.006-.259 2.797-.152c.77.103 1.536.393 1.956 1.064c.446.714.312 1.542-.012 2.258c-.33.728-.918 1.499-1.672 2.268c-1.516 1.547-3.836 3.226-6.597 4.697c-2.763 1.472-5.495 2.484-7.694 2.92c-1.095.217-2.098.299-2.923.201c-.8-.095-1.6-.383-2.032-1.075c-.47-.752-.296-1.63.07-2.379c.375-.768 1.032-1.586 1.872-2.403L4 12.416c0 .219.083.71.168 1.146c.045.23.09.444.123.596c-.652.666-1.098 1.263-1.339 1.756c-.277.567-.208.825-.145.925c.072.116.305.305.937.38c.609.073 1.44.018 2.455-.183c2.02-.4 4.613-1.351 7.28-2.772c2.667-1.42 4.85-3.015 6.23-4.423c.694-.707 1.15-1.334 1.377-1.836c.233-.515.167-.75.107-.844c-.07-.112-.289-.294-.883-.374c-.542-.072-1.272-.041-2.163.112L16.87 5.656c.338-.101.658-.17.842-.203"/></svg></a></nav>
 </div>
 <div class="widgets">
+
+
 <widget class="widget-wrapper post-list"><div class="widget-header dis-select"><span class="name">最近更新</span></div><div class="widget-body fs14"><a class="item title" href="/article/f83728a5.html"><span class="title">解决Hexo+Typora引用图片不方便问题</span></a><a class="item title" href="/article/b54c182.html"><span class="title">如何在WSL的Ubuntu 24.04上通过VcXsrv使用Xfce桌面</span></a><a class="item title" href="/article/ad5e93bb.html"><span class="title">在已存在Windows的电脑（VMware环境）上安装Arch Linux（双系统）与KDE桌面环境</span></a><a class="item title" href="/article/c73044ca.html"><span class="title">在780M核显笔记本上通过LM Studio本地化部署DeepSeek大模型</span></a><a class="item title" href="/article/b8b788b0.html"><span class="title">创建了一个基于Hexo和Vercel的博客！</span></a></div></widget>
-
-
 </div>
 <footer class="footer dis-select"><div class="social-wrap"><a class="social" href="https://github.com/lincannm" target="_blank" rel="external nofollow noopener noreferrer"><i class="fa-brands fa-github" style="color: black;"></i></a><a class="social" href="https://github.com/lincannm" target="_blank" rel="external nofollow noopener noreferrer"><i class="fa-brands fa-bilibili" style="color: black;"></i></a><a class="social" href="mailto:lincannm@163.com" rel="noopener noreferrer"><i class="fa-regular fa-envelope" style="color: black;"></i></a></div></footer>
 </div></aside><div class="l_main" id="main">
 
 
 
-<article class='md-text error-page'>
-  <h1><img id='error' src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/404/1c830bfcd517d.svg' alt='404'></h1>
-  <p class='what'>
-    <strong>
-      很抱歉，您访问的页面不存在
-    </strong>
-  </p>
-  <p class='why'>
-    可能是输入地址有误或该地址已被删除
-  </p>
-  <br><br>
-  <a class='button' id='back' href="/">返回主页</a>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/%E6%91%B8%E9%B1%BC/">摸鱼</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-02-01T12:30:30.000Z">2025-02-01</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-02-18T09:54:27.808Z">2025-02-18</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>在780M核显笔记本上通过LM Studio本地化部署DeepSeek大模型</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p>本来想用Ollama部署LLM，但我下载启动Ollama后发现官方不支持我的Radeon 780M核显（gfx1103）：</p>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">C:\<span class="title">Users</span>\<span class="title">lincannm</span>&gt;<span class="title">ollama</span> <span class="title">serve</span></span></span><br><span class="line"><span class="function">2025/02/01 18:01:29 <span class="title">routes.go</span>:1187: <span class="title">INFO</span> <span class="title">server</span> <span class="title">config</span> <span class="title">env</span>=&quot;<span class="title">map</span>[<span class="title">CUDA_VISIBLE_DEVICES</span>: <span class="title">GPU_DEVICE_ORDINAL</span>: <span class="title">HIP_VISIBLE_DEVICES</span>: <span class="title">HSA_OVERRIDE_GFX_VERSION</span>: <span class="title">HTTPS_PROXY</span>: <span class="title">HTTP_PROXY</span>: <span class="title">NO_PROXY</span>: <span class="title">OLLAMA_DEBUG:false</span> <span class="title">OLLAMA_FLASH_ATTENTION:false</span> <span class="title">OLLAMA_GPU_OVERHEAD</span>:0 <span class="title">OLLAMA_HOST:http</span>://127.0.0.1:11434 <span class="title">OLLAMA_INTEL_GPU:false</span> <span class="title">OLLAMA_KEEP_ALIVE</span>:5<span class="title">m0s</span> <span class="title">OLLAMA_KV_CACHE_TYPE</span>: <span class="title">OLLAMA_LLM_LIBRARY</span>: <span class="title">OLLAMA_LOAD_TIMEOUT</span>:5<span class="title">m0s</span> <span class="title">OLLAMA_MAX_LOADED_MODELS</span>:0 <span class="title">OLLAMA_MAX_QUEUE</span>:512 <span class="title">OLLAMA_MODELS:C</span>:\\<span class="title">Users</span>\\<span class="title">lincannm</span>\\.<span class="title">ollama</span>\\<span class="title">models</span> <span class="title">OLLAMA_MULTIUSER_CACHE:false</span> <span class="title">OLLAMA_NOHISTORY:false</span> <span class="title">OLLAMA_NOPRUNE:false</span> <span class="title">OLLAMA_NUM_PARALLEL</span>:0 <span class="title">OLLAMA_ORIGINS</span>:[<span class="title">http</span>://<span class="title">localhost</span> <span class="title">https</span>://<span class="title">localhost</span> <span class="title">http</span>://<span class="title">localhost</span>:* <span class="title">https</span>://<span class="title">localhost</span>:* <span class="title">http</span>://127.0.0.1 <span class="title">https</span>://127.0.0.1 <span class="title">http</span>://127.0.0.1:* <span class="title">https</span>://127.0.0.1:* <span class="title">http</span>://0.0.0.0 <span class="title">https</span>://0.0.0.0 <span class="title">http</span>://0.0.0.0:* <span class="title">https</span>://0.0.0.0:* <span class="title">app</span>://* <span class="title">file</span>://* <span class="title">tauri</span>://* <span class="title">vscode</span>-<span class="title">webview</span>://*] <span class="title">OLLAMA_SCHED_SPREAD:false</span> <span class="title">ROCR_VISIBLE_DEVICES</span>:]&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.821+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">images.go</span>:432 <span class="title">msg</span>=&quot;<span class="title">total</span> <span class="title">blobs</span>: 0&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.822+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">images.go</span>:439 <span class="title">msg</span>=&quot;<span class="title">total</span> <span class="title">unused</span> <span class="title">blobs</span> <span class="title">removed</span>: 0&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.823+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">routes.go</span>:1238 <span class="title">msg</span>=&quot;<span class="title">Listening</span> <span class="title">on</span> 127.0.0.1:11434 (<span class="title">version</span> 0.5.7)&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.825+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">routes.go</span>:1267 <span class="title">msg</span>=&quot;<span class="title">Dynamic</span> <span class="title">LLM</span> <span class="title">libraries</span>&quot; <span class="title">runners</span>=&quot;[<span class="title">cuda_v12_avx</span> <span class="title">rocm_avx</span> <span class="title">cpu</span> <span class="title">cpu_avx</span> <span class="title">cpu_avx2</span> <span class="title">cuda_v11_avx</span>]&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.825+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">gpu.go</span>:226 <span class="title">msg</span>=&quot;<span class="title">looking</span> <span class="title">for</span> <span class="title">compatible</span> <span class="title">GPUs</span>&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.825+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">gpu_windows.go</span>:167 <span class="title">msg</span>=<span class="title">packages</span> <span class="title">count</span>=1</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:29.825+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">gpu_windows.go</span>:214 <span class="title">msg</span>=&quot;&quot; <span class="title">package</span>=0 <span class="title">cores</span>=8 <span class="title">efficiency</span>=0 <span class="title">threads</span>=16</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:30.397+08:00 <span class="title">level</span>=<span class="title">WARN</span> <span class="title">source</span>=<span class="title">amd_windows.go</span>:140 <span class="title">msg</span>=&quot;<span class="title">amdgpu</span> <span class="title">is</span> <span class="title">not</span> <span class="title">supported</span> (<span class="title">supported</span> <span class="title">types</span>:[<span class="title">gfx1030</span> <span class="title">gfx1100</span> <span class="title">gfx1101</span> <span class="title">gfx1102</span> <span class="title">gfx906</span>])&quot; <span class="title">gpu_type</span>=<span class="title">gfx1103</span> <span class="title">gpu</span>=0 <span class="title">library</span>=<span class="title">C</span>:\<span class="title">Users</span>\<span class="title">lincannm</span>\<span class="title">AppData</span>\<span class="title">Local</span>\<span class="title">Programs</span>\<span class="title">Ollama</span>\<span class="title">lib</span>\<span class="title">ollama</span></span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:30.400+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">gpu.go</span>:392 <span class="title">msg</span>=&quot;<span class="title">no</span> <span class="title">compatible</span> <span class="title">GPUs</span> <span class="title">were</span> <span class="title">discovered</span>&quot;</span></span><br><span class="line"><span class="function"><span class="title">time</span>=2025-02-01<span class="title">T18</span>:01:30.400+08:00 <span class="title">level</span>=<span class="title">INFO</span> <span class="title">source</span>=<span class="title">types.go</span>:131 <span class="title">msg</span>=&quot;<span class="title">inference</span> <span class="title">compute</span>&quot; <span class="title">id</span>=0 <span class="title">library</span>=<span class="title">cpu</span> <span class="title">variant</span>=<span class="title">avx2</span> <span class="title">compute</span>=&quot;&quot; <span class="title">driver</span>=0.0 <span class="title">name</span>=&quot;&quot; <span class="title">total</span>=&quot;27.8 <span class="title">GiB</span>&quot; <span class="title">available</span>=&quot;20.3 <span class="title">GiB</span>&quot;</span></span><br></pre></td></tr></table></figure>
+<p>听说还有个叫做LM Studio的东西，对我这样的780M核显支持不错，可以直接用。而且Ollama是命令行使用，而LM Studio则是GUI操作，更加人性化。</p>
+<h1 id="下载与安装"><a href="#下载与安装" class="headerlink" title="下载与安装"></a>下载与安装</h1><p>LM Studio官网：<a target="_blank" rel="noopener" href="https://lmstudio.ai/">https://lmstudio.ai/</a></p>
+<p>下载它：<img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250201185052113.png" alt="image-20250201185052113"></p>
+<p>安装就不必多说了吧。</p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>点开侧边栏第四个图标，弹出此“发现”窗口。首先到这里看看，由于我的GPU是AMD Radeon 780M，在这里看看确保选中了Vulkan选项，这样运行LLM的时候才会调用到显卡。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/184348.png" alt="184348"></p>
+<p>App Settings可以设置界面为中文。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/184421.png" alt="184421"></p>
+<p>到“Model Search”下载DeekSeek模型。由于我的显存只有可怜的4G，我就下载大小为4G左右的7B版本就好。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/184330.png" alt="184330"></p>
+<p>下载完成！回到聊天界面，到顶栏选择模型。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/image-20250201185827964.png" alt="image-20250201185827964"></p>
+<p>根据电脑配置配置这些配置~（GPU Offload被译为GPU卸载有点别扭，网上查了一下，其实就是根据当前GPU的显存性能来调节线条，值越高，就意味着运行模型的性能占比交给GPU的更高）</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/185910.png" alt="185910"></p>
+<p>点一下加载模型就加载好了。<strong>部署到此结束，整个过程都非常简单</strong>。</p>
+<p>开始聊天，思考过程中笔记本风扇直接起飞。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/190340.png" alt="190340"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/190354.png" alt="190354"></p>
+<p>回复太人机了，完整版DeepSeek会跟我解析这段话的幽默性。这样也很正常，完整版671B，我才7B的模型根本比不了。</p>
+<h2 id="网络优化"><a href="#网络优化" class="headerlink" title="网络优化"></a>网络优化</h2><p>我是翻墙出去下载的模型，如果没有翻墙条件的话可以打开LM Studio安装目录，用vscode把目录下所有文件做全局替换——把所有<code>huggingface.co</code>替换为<code>hf-mirror.com</code>即可。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/204918.png" alt="204918"></p>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>不知道为什么我的核显占用很小，几乎闲着，而且一把GPU Offload调大就报Unknown error。。。全网找不到解决办法。</p>
+<hr>
+<p>后来我下载了14B的模型，终于懂得解析幽默性了，这下就聪明多了。但是我让它用贴吧语气锐评ChatGPT，依旧不聪明，甚至都不知道是在骂ChatGPT还是在骂我。。。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/224543.png" alt="224543"></p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/224750.png" alt="224750"></p>
+<hr>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>核显占用小的问题解决了！搞了两天原来更新一下amd显卡驱动就好了。。。更新了之后，GPU Offload可以全部拉满，可以全部交给显卡计算了。</p>
+<p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/images/223858.png" alt="223858"></p>
+<h2 id="Ollama-for-amd"><a href="#Ollama-for-amd" class="headerlink" title="Ollama-for-amd"></a>Ollama-for-amd</h2><p>在那个问题解决之前，试了一下<strong>Ollama-for-amd</strong>项目（<a target="_blank" rel="noopener" href="https://github.com/likelovewant/ollama-for-amd/">https://github.com/likelovewant/ollama-for-amd/</a>），该项目针对amd显卡进行支持性扩展，通过这个项目我的780M也能跑ollama了。安装的话直接下载Release里面的exe就行了。</p>
+<p>然而聊天会有bug，不仅没有深度思考过程，后面我每说一句它还只会直接接我的话。不过既然问题解决了，干脆接着用LMStudio算了吧。</p>
+
+<div class="article-footer fs14">
+    <section id="license">
+      <div class="header"><span>许可协议</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    </div>
 </article>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">较新文章</div><a href="/article/f83728a5.html">解决Hexo+Typora引用图片不方便问题</a></div><div class="item" id="next"><div class="note">较早文章</div><a href="/article/b8b788b0.html">创建了一个基于Hexo和Vercel的博客！</a></div></section></div>
+
+
 
 
   <div class="related-wrap md-text" id="comments">
@@ -92,7 +142,14 @@
 <p><br><img no-lazy src="https://count.getloli.com/@blog.linc.work?name=blog.linc.work&theme=rule34&padding=6&offset=0&align=top&scale=1&pixelated=1&darkmode=auto&prefix=0" / onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel blur'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">本文目录</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E4%B8%8E%E5%AE%89%E8%A3%85"><span class="toc-text">下载与安装</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E4%BC%98%E5%8C%96"><span class="toc-text">网络优化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3"><span class="toc-text">问题解决</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ollama-for-amd"><span class="toc-text">Ollama-for-amd</span></a></li></ol></li></ol></div><div class="widget-footer">
+
+<a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 12c0-4.714 0-7.071 1.464-8.536C4.93 2 7.286 2 12 2c4.714 0 7.071 0 8.535 1.464C22 4.93 22 7.286 22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12Z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/></g></svg><span>回到顶部</span></a><a class="buttom" onclick="util.scrollComment()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.46 1.25h3.08c1.603 0 2.86 0 3.864.095c1.023.098 1.861.3 2.6.752a5.75 5.75 0 0 1 1.899 1.899c.452.738.654 1.577.752 2.6c.095 1.004.095 2.261.095 3.865v1.067c0 1.141 0 2.036-.05 2.759c-.05.735-.153 1.347-.388 1.913a5.75 5.75 0 0 1-3.112 3.112c-.805.334-1.721.408-2.977.43a10.81 10.81 0 0 0-.929.036c-.198.022-.275.054-.32.08c-.047.028-.112.078-.224.232c-.121.166-.258.396-.476.764l-.542.916c-.773 1.307-2.69 1.307-3.464 0l-.542-.916a10.605 10.605 0 0 0-.476-.764c-.112-.154-.177-.204-.224-.232c-.045-.026-.122-.058-.32-.08c-.212-.023-.49-.03-.93-.037c-1.255-.021-2.171-.095-2.976-.429A5.75 5.75 0 0 1 1.688 16.2c-.235-.566-.338-1.178-.389-1.913c-.049-.723-.049-1.618-.049-2.76v-1.066c0-1.604 0-2.86.095-3.865c.098-1.023.3-1.862.752-2.6a5.75 5.75 0 0 1 1.899-1.899c.738-.452 1.577-.654 2.6-.752C7.6 1.25 8.857 1.25 10.461 1.25M6.739 2.839c-.914.087-1.495.253-1.959.537A4.25 4.25 0 0 0 3.376 4.78c-.284.464-.45 1.045-.537 1.96c-.088.924-.089 2.11-.089 3.761v1c0 1.175 0 2.019.046 2.685c.045.659.131 1.089.278 1.441a4.25 4.25 0 0 0 2.3 2.3c.515.214 1.173.294 2.429.316h.031c.398.007.747.013 1.037.045c.311.035.616.104.909.274c.29.17.5.395.682.645c.169.232.342.525.538.856l.559.944a.52.52 0 0 0 .882 0l.559-.944c.196-.331.37-.624.538-.856c.182-.25.392-.476.682-.645c.293-.17.598-.24.909-.274c.29-.032.639-.038 1.037-.045h.032c1.255-.022 1.913-.102 2.428-.316a4.25 4.25 0 0 0 2.3-2.3c.147-.352.233-.782.278-1.441c.046-.666.046-1.51.046-2.685v-1c0-1.651 0-2.837-.089-3.762c-.087-.914-.253-1.495-.537-1.959a4.25 4.25 0 0 0-1.403-1.403c-.464-.284-1.045-.45-1.96-.537c-.924-.088-2.11-.089-3.761-.089h-3c-1.651 0-2.837 0-3.762.089" clip-rule="evenodd"/><path fill="currentColor" d="M9 11a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0m4 0a1 1 0 1 1-2 0a1 1 0 0 1 2 0"/></svg><span>参与讨论</span></a></div></widget>
+</div></aside><div class='float-panel blur'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>

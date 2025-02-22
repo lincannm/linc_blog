@@ -6,12 +6,12 @@ https://blog.linc.work/about/index.html
 https://blog.linc.work/article/b8b788b0.html
 https://blog.linc.work/
 https://blog.linc.work/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/
-https://blog.linc.work/tags/LLM/
 https://blog.linc.work/tags/Linux/
 https://blog.linc.work/tags/Arch-Linux/
 https://blog.linc.work/tags/%E5%8F%8C%E7%B3%BB%E7%BB%9F/
 https://blog.linc.work/tags/KDE/
 https://blog.linc.work/tags/%E7%AC%94%E8%AE%B0/
+https://blog.linc.work/tags/LLM/
 https://blog.linc.work/tags/WSL/
 https://blog.linc.work/tags/Ubuntu/
 https://blog.linc.work/tags/Xfce/

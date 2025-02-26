@@ -6,7 +6,7 @@
   <link href="https://blog.linc.work/atom.xml" rel="self"/>
   
   <link href="https://blog.linc.work/"/>
-  <updated>2025-02-18T09:54:27.813Z</updated>
+  <updated>2025-02-26T07:06:42.887Z</updated>
   <id>https://blog.linc.work/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>修改SDDM登录界面DPI</title>
+    <link href="https://blog.linc.work/article/f3576d70.html"/>
+    <id>https://blog.linc.work/article/f3576d70.html</id>
+    <published>2025-02-26T03:00:56.000Z</published>
+    <updated>2025-02-26T07:06:42.887Z</updated>
+    
+    <content type="html"><![CDATA[<p>sddm在高分辨率屏上面界面会显示得很小。根据网上的资料，可以修改sddm配置文件（&#x2F;usr&#x2F;lib&#x2F;sddm.conf.d&#x2F;default.conf）里的ServerArguments值为<code>ServerArguments=-nolisten tcp -dpi 192</code>。然而修改后毫无卵用，研究了好几天，终于发现了正确方法。</p><span id="more"></span><p>根据<a href="https://forums.opensuse.org/t/ui-scaling-in-sddm-no-longer-works-after-kde-plasma-6-upgrade/173350/2">https://forums.opensuse.org/t/ui-scaling-in-sddm-no-longer-works-after-kde-plasma-6-upgrade/173350/2</a>，得修改GreeterEnvironment才行。</p><p>在<code>/etc/sddm.conf.d/</code>下创建个conf文件，名字随意，可以命名为<code>hidpi.conf</code>。内容如下：</p><pre><code class="language-conf">[General]GreeterEnvironment=QT_SCREEN_SCALE_FACTORS=2,QT_FONT_DPI=192</code></pre><p>注销后进入sddm，可以看见生效了。</p>]]></content>
+    
+    
+    <summary type="html">&lt;p&gt;sddm在高分辨率屏上面界面会显示得很小。根据网上的资料，可以修改sddm配置文件（&amp;#x2F;usr&amp;#x2F;lib&amp;#x2F;sddm.conf.d&amp;#x2F;default.conf）里的ServerArguments值为&lt;code&gt;ServerArguments=-nolisten tcp -dpi 192&lt;/code&gt;。然而修改后毫无卵用，研究了好几天，终于发现了正确方法。&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="Linux" scheme="https://blog.linc.work/tags/Linux/"/>
+    
+    <category term="KDE" scheme="https://blog.linc.work/tags/KDE/"/>
+    
+    <category term="SDDM" scheme="https://blog.linc.work/tags/SDDM/"/>
+    
+  </entry>
   
   <entry>
     <title>如何在WSL的Ubuntu 24.04上通过VcXsrv使用Xfce桌面</title>
@@ -102,10 +125,10 @@
     <published>2025-01-30T09:45:10.000Z</published>
     <updated>2025-01-31T09:08:34.000Z</updated>
     
-    <content type="html"><![CDATA[<p>春节快乐🎉🎉！突发奇想想搞个博客网站，于是就花了15块钱（首年）买下 linc.work 这个域名，通过 Hexo + Redefine主题 + Github + Vercel 搭建了这个网站（另外通过 LeanCloud + Vercel 搞了文章下的 Waline 评论系统）。</p><p><strong>搞个博客网站主要是可以分享点东西，记录点东西</strong>，当然直接原因还是春节无聊搞着玩的。有群友叫我玩玩Hugo，但是我玩过，不会玩，还是Hexo在网上的资料多一点，适合小白操作。博客这玩意不少搞计算机的都有，我不搞显得我不专业（</p><p>博客折腾了两天才搞好。我在我电脑上用VMware装了个Ubuntu 24.04.1，安装nodejs，然后搭建hexo环境，安装Redefine主题，之后用 <code>hexo deploy</code> 把博客的静态页面部署到GitHub上，再通过Vercel把GitHub仓库部署到Vercel上面，最后再把域名解析到Vercel上边就好了。</p><p>几乎三年没玩技术了，直到最近才听说Vercel挺好用，用了一下还真是个好东西。除了部署静态页面，后端也都能部署（比GitHub Pages牛），而且还能免费使用<em><del>（白嫖）</del></em>，确实牛逼。</p><p>（头图pid：115320144）</p>]]></content>
+    <content type="html"><![CDATA[<p>春节快乐🎉🎉！突发奇想想搞个博客网站，于是就花了15块钱（首年）买下 linc.work 这个域名，通过 Hexo + Redefine主题 + Github + Vercel 搭建了这个网站（另外通过 LeanCloud + Vercel 搞了文章下的 Waline 评论系统）。</p><span id="more"></span><p><strong>搞个博客网站主要是可以分享点东西，记录点东西</strong>，当然直接原因还是春节无聊搞着玩的。有群友叫我玩玩Hugo，但是我玩过，不会玩，还是Hexo在网上的资料多一点，适合小白操作。博客这玩意不少搞计算机的都有，我不搞显得我不专业（</p><p>博客折腾了两天才搞好。我在我电脑上用VMware装了个Ubuntu 24.04.1，安装nodejs，然后搭建hexo环境，安装Redefine主题，之后用 <code>hexo deploy</code> 把博客的静态页面部署到GitHub上，再通过Vercel把GitHub仓库部署到Vercel上面，最后再把域名解析到Vercel上边就好了。</p><p>几乎三年没玩技术了，直到最近才听说Vercel挺好用，用了一下还真是个好东西。除了部署静态页面，后端也都能部署（比GitHub Pages牛），而且还能免费使用<em><del>（白嫖）</del></em>，确实牛逼。</p><p>（头图pid：115320144）</p>]]></content>
     
     
-    <summary type="html">春节快乐🎉🎉！突发奇想想搞个博客网站，于是就花了15块钱上阿里云买了 linc.work 这个域名（首年），通过 Hexo + Redefine主题 + Github + Vercel搭建了这个网站（另外通过 LeanCloud + Vercel 搞了 Waline 评论系统）。</summary>
+    <summary type="html">&lt;p&gt;春节快乐🎉🎉！突发奇想想搞个博客网站，于是就花了15块钱（首年）买下 linc.work 这个域名，通过 Hexo + Redefine主题 + Github + Vercel 搭建了这个网站（另外通过 LeanCloud + Vercel 搞了文章下的 Waline 评论系统）。&lt;/p&gt;</summary>
     
     
     

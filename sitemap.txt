@@ -1,3 +1,4 @@
+https://blog.linc.work/article/dfd1638c.html
 https://blog.linc.work/article/f3576d70.html
 https://blog.linc.work/article/f83728a5.html
 https://blog.linc.work/article/b54c182.html
@@ -10,11 +11,13 @@ https://blog.linc.work/tags/KDE/
 https://blog.linc.work/tags/SDDM/
 https://blog.linc.work/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/
 https://blog.linc.work/tags/LLM/
-https://blog.linc.work/tags/Hexo/
-https://blog.linc.work/tags/Typora/
 https://blog.linc.work/tags/WSL/
 https://blog.linc.work/tags/Ubuntu/
 https://blog.linc.work/tags/Xfce/
+https://blog.linc.work/tags/Web/
+https://blog.linc.work/tags/Python/
+https://blog.linc.work/tags/Hexo/
+https://blog.linc.work/tags/Typora/
 https://blog.linc.work/categories/%E6%91%B8%E9%B1%BC/
-https://blog.linc.work/categories/Hexo/
 https://blog.linc.work/categories/Linux/
+https://blog.linc.work/categories/Hexo/

@@ -21,3 +21,4 @@ https://blog.linc.work/tags/Typora/
 https://blog.linc.work/categories/%E6%91%B8%E9%B1%BC/
 https://blog.linc.work/categories/Linux/
 https://blog.linc.work/categories/Hexo/
+https://blog.linc.work/categories/Web/

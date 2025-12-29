@@ -68,8 +68,8 @@
 <div class="article banner top">
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">主页</a>
-<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-28T06:08:21.791Z">2025-12-28</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-29T17:22:52.960Z">2025-12-30</time></span></div></div></div>
+<span class="sep"></span><a class="cap breadcrumb" href="/">文章</a><span class="sep"></span><a class="cap breadcrumb-link" href="/categories/Web/">Web</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">发布于：<time datetime="2025-12-29T17:30:00.000Z">2025-12-30</time></span><span class="sep updated"></span><span class="text updated">更新于：<time datetime="2025-12-29T17:33:32.160Z">2025-12-30</time></span></div></div></div>
     
     <div class="bottom only-title">
       
@@ -108,7 +108,7 @@
 <p><img class="lazy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAABGdBTUEAALGPC/xhBQAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAAAaADAAQAAAABAAAAAQAAAADa6r/EAAAAC0lEQVQIHWNgAAIAAAUAAY27m/MAAAAASUVORK5CYII=" data-src="/article/dfd1638c/image-20251229210424715.png" alt="image-20251229210424715"></p>
 <h3 id="POST-cas-mfa-detect"><a href="#POST-cas-mfa-detect" class="headerlink" title="POST &#x2F;cas&#x2F;mfa&#x2F;detect"></a>POST &#x2F;cas&#x2F;mfa&#x2F;detect</h3><p><strong>Content-Type</strong>: <code>application/x-www-form-urlencoded</code></p>
 <p><strong>请求体</strong>：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=用户名&amp;password=RSA加密后的密码</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=用户名&amp;password=RSA加密后的密码</span><br></pre></td></tr></table></figure>
 
 <p>这里的密码，是通过<code>/cas/jwt/publicKey</code>提供的公钥使用PKCS1_v1_5算法加密的，并使用base64编码，之后在前面加上<code>__RSA__</code>前缀。</p>
 <p><strong>响应</strong>：</p>

@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.linc.work/article/dfd1638c.html</loc>
+    <loc>https://blog.linc.work/article/dfd1638c</loc>
     
     <lastmod>2025-12-29</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/article/f3576d70.html</loc>
+    <loc>https://blog.linc.work/article/f3576d70</loc>
     
     <lastmod>2025-02-26</lastmod>
     
@@ -20,7 +20,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/article/f83728a5.html</loc>
+    <loc>https://blog.linc.work/article/f83728a5</loc>
     
     <lastmod>2025-02-18</lastmod>
     
@@ -29,7 +29,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/article/b54c182.html</loc>
+    <loc>https://blog.linc.work/article/b54c182</loc>
     
     <lastmod>2025-02-18</lastmod>
     
@@ -38,7 +38,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/article/c73044ca.html</loc>
+    <loc>https://blog.linc.work/article/c73044ca</loc>
     
     <lastmod>2025-02-18</lastmod>
     
@@ -47,7 +47,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/about/index.html</loc>
+    <loc>https://blog.linc.work/about/</loc>
     
     <lastmod>2025-02-17</lastmod>
     
@@ -56,7 +56,7 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/article/b8b788b0.html</loc>
+    <loc>https://blog.linc.work/article/b8b788b0</loc>
     
     <lastmod>2025-01-31</lastmod>
     
@@ -72,6 +72,20 @@
     <priority>1.0</priority>
   </url>
 
+  
+  <url>
+    <loc>https://blog.linc.work/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.linc.work/tags/LLM/</loc>
+    <lastmod>2026-05-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://blog.linc.work/tags/Linux/</loc>
@@ -95,13 +109,6 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/tags/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://blog.linc.work/tags/WSL/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
@@ -117,13 +124,6 @@
   
   <url>
     <loc>https://blog.linc.work/tags/Xfce/</loc>
-    <lastmod>2026-05-27</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.linc.work/tags/LLM/</loc>
     <lastmod>2026-05-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

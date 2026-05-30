@@ -7221,7 +7221,7 @@ details.toc[open] >div.body section .header+.doc_tree {
   right: var(--inset);
   border-radius: 16px;
   --saturate: 400%;
-  --blur-px: 0px;
+  --blur-px: 100px;
   --background-opacity: 1;
   background-position: center;
   background-size: cover;
@@ -9090,7 +9090,7 @@ body>.sitebg .siteblur {
   background-color: var(--blur-bg);
   --blur-sat: 300%;
   --blur-px: 100px;
-  --blur-bg: var(--alpha75);
+  --blur-bg: var(--bg-a75);
 }
 @supports ((-webkit-backdrop-filter: blur(var(--blur-px))) or (backdrop-filter: blur(var(--blur-px)))) {
   body>.sitebg .siteblur {

@@ -102,6 +102,20 @@
   </url>
   
   <url>
+    <loc>https://blog.linc.work/tags/Web/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.linc.work/tags/Python/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.linc.work/tags/LLM/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
@@ -124,20 +138,6 @@
   
   <url>
     <loc>https://blog.linc.work/tags/Xfce/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.linc.work/tags/Web/</loc>
-    <lastmod>2026-05-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://blog.linc.work/tags/Python/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -167,14 +167,14 @@
   </url>
   
   <url>
-    <loc>https://blog.linc.work/categories/Linux/</loc>
+    <loc>https://blog.linc.work/categories/Web/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://blog.linc.work/categories/Web/</loc>
+    <loc>https://blog.linc.work/categories/Linux/</loc>
     <lastmod>2026-05-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
